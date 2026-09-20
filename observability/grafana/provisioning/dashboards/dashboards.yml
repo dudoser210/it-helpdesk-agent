@@ -1,0 +1,7 @@
+apiVersion: 1
+providers:
+  - name: HelpDesk
+    folder: IT HelpDesk
+    type: file
+    options:
+      path: /var/lib/grafana/dashboards
