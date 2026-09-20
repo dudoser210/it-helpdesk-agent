@@ -54,7 +54,7 @@ docker compose up --build
 ```bash
 cp .env.example .env
 docker compose -f docker-compose.yml -f docker-compose.ollama.yml up -d --build
-docker compose -f docker-compose.yml -f docker-compose.ollama.yml exec ollama ollama pull qwen3.5:latest
+docker compose -f docker-compose.yml -f docker-compose.ollama.yml exec ollama ollama pull qwen3:8b
 docker compose -f docker-compose.yml -f docker-compose.ollama.yml restart agent
 ```
 
