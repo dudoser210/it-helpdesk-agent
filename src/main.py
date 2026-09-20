@@ -5,11 +5,11 @@ import json
 from src.config import get_settings
 from src.models import TicketRequest
 from src.observability.logging import configure_logging
-from src.orchestrator import HelpDeskOrchestrator
+from src.orchestrator import HelpingOrchestrator
 
 
 async def run() -> None:
-    parser = argparse.ArgumentParser(description="IT HelpDesk Agent CLI")
+    parser = argparse.ArgumentParser(description="IT Helping Agent CLI")
     parser.add_argument("text", help="Текст заявки")
     parser.add_argument("--employee", default="demo-user")
     parser.add_argument("--device")
@@ -18,7 +18,7 @@ async def run() -> None:
     args = parser.parse_args()
     settings = get_settings()
     configure_logging(settings.log_level)
-    orchestrator = HelpDeskOrchestrator(settings)
+    orchestrator = HelpingOrchestrator(settings)
     result = await orchestrator.process(
         TicketRequest(employee_id=args.employee, text=args.text, device=args.device, os=args.os, location=args.location)
     )

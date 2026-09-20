@@ -1,3 +1,3 @@
-"""Local multi-agent IT HelpDesk package."""
+"""Local multi-agent IT Helping package."""
 
 __version__ = "1.0.0"

@@ -5,7 +5,7 @@ from pathlib import Path
 
 from src.config import get_settings
 from src.models import TicketRequest
-from src.orchestrator import HelpDeskOrchestrator
+from src.orchestrator import HelpingOrchestrator
 
 
 def contains_any(text: str, needles: list[str]) -> bool:
@@ -19,7 +19,7 @@ async def main() -> int:
     parser.add_argument("--output", default="output/eval-results.json")
     args = parser.parse_args()
     cases = [json.loads(line) for line in Path(args.cases).read_text(encoding="utf-8").splitlines() if line.strip()]
-    system = HelpDeskOrchestrator(get_settings())
+    system = HelpingOrchestrator(get_settings())
     results = []
     for case in cases:
         response = await system.process(TicketRequest(**case["request"]))

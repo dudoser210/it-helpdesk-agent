@@ -7,7 +7,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
-    app_name: str = "IT HelpDesk Agent"
+    app_name: str = "IT Helping Agent"
     ollama_base_url: str = "http://host.docker.internal:11434"
     ollama_model: str = "qwen3.5:latest"
     ollama_timeout_seconds: float = 180.0
@@ -25,7 +25,7 @@ class Settings(BaseSettings):
 
     @property
     def database_path(self) -> Path:
-        return self.data_dir / "helpdesk.db"
+        return self.data_dir / "helping.db"
 
 
 @lru_cache

@@ -1,5 +1,5 @@
 ---
-name: helpdesk-safety-gate
+name: helping-safety-gate
 description: Независимая проверка шагов на секреты, разрушительные действия, обход политик и необходимость эскалации.
 ---
 

@@ -1,7 +1,7 @@
 [project]
-name = "it-helpdesk-agent"
+name = "it-helping-agent"
 version = "1.0.0"
-description = "Local multi-agent IT HelpDesk powered by Ollama"
+description = "Local multi-agent IT Helping powered by Ollama"
 requires-python = ">=3.11"
 dependencies = [
   "fastapi>=0.115,<1", "uvicorn[standard]>=0.34,<1", "httpx>=0.28,<1",

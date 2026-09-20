@@ -28,7 +28,7 @@ from reportlab.platypus import (
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "docs" / "REPORT.md"
-OUTPUT = ROOT / "output" / "IT_HelpDesk_Agent_Report.pdf"
+OUTPUT = ROOT / "output" / "IT_Helping_Agent_Report.pdf"
 FONT = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
 FONT_BOLD = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
 FONT_MONO = "/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf"
@@ -77,7 +77,7 @@ def footer(canvas, doc):
     canvas.line(20 * mm, 15 * mm, width - 20 * mm, 15 * mm)
     canvas.setFont("DejaVuSans", 7.5)
     canvas.setFillColor(colors.HexColor("#64748B"))
-    canvas.drawString(20 * mm, 9 * mm, "IT HelpDesk Agent - отчёт по проекту")
+    canvas.drawString(20 * mm, 9 * mm, "IT Helping Agent - отчёт по проекту")
     canvas.drawRightString(width - 20 * mm, 9 * mm, str(doc.page))
     canvas.restoreState()
 
@@ -176,7 +176,7 @@ def build() -> None:
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     doc = BaseDocTemplate(
         str(OUTPUT), pagesize=A4, leftMargin=20 * mm, rightMargin=20 * mm,
-        topMargin=20 * mm, bottomMargin=20 * mm, title="IT HelpDesk Agent",
+        topMargin=20 * mm, bottomMargin=20 * mm, title="IT Helping Agent",
         author="Учебный проект",
     )
     frame = Frame(doc.leftMargin, doc.bottomMargin, doc.width, doc.height, id="main")

@@ -1,4 +1,4 @@
-# IT HelpDesk Agent
+# IT Helping Agent
 
 Локальная мультиагентная система для заявок сотрудников по Wi-Fi, принтерам, доступам и программам. LLM работает через уже установленный Ollama и `qwen3:8b`; данные не отправляются во внешние API.
 
@@ -43,7 +43,7 @@ docker compose up --build
 
 - интерфейс: http://localhost:8000
 - Swagger: http://localhost:8000/docs
-- Grafana: http://localhost:3000 (`admin` / `helpdesk-demo`)
+- Grafana: http://localhost:3000 (`admin` / `helping-demo`)
 - Prometheus: http://localhost:9090
 - Jaeger: http://localhost:16686
 
@@ -112,7 +112,7 @@ python -m evals.run_evals
 
 - Метрики Prometheus: `/metrics`; готовый Grafana dashboard.
 - JSON-логи: `docker compose logs -f agent`.
-- Трейсы OpenTelemetry: Jaeger, сервис `IT HelpDesk Agent`.
+- Трейсы OpenTelemetry: Jaeger, сервис `IT Helping Agent`.
 - Алерты: недоступность, более 10% ошибок LLM, p95 выше 60 секунд.
 
 ## Настройка

@@ -19,7 +19,7 @@ from src.safety import filter_steps, output_is_safe, redact_secrets
 logger = logging.getLogger(__name__)
 
 
-class HelpDeskOrchestrator:
+class HelpingOrchestrator:
     """Deterministic DAG: intake -> selected specialists -> policy -> resolver."""
 
     def __init__(self, settings: Settings, tracer=None):
@@ -46,7 +46,7 @@ class HelpDeskOrchestrator:
     async def _specialist(self, category: str, request: TicketRequest, intake) -> tuple[SpecialistResult, list[str]]:
         docs = self.retriever.search(request.text, self.settings.rag_top_k, category)
         async with self.semaphore:
-            with span(self.tracer, f"agent.{category}", {"helpdesk.category": category}):
+            with span(self.tracer, f"agent.{category}", {"helping.category": category}):
                 result = await self.specialists[category].diagnose(
                     request, intake, self.retriever.context(docs)
                 )
@@ -55,7 +55,7 @@ class HelpDeskOrchestrator:
     async def process(self, request: TicketRequest) -> TicketResponse:
         started = time.perf_counter()
         ticket_id = f"HD-{uuid.uuid4().hex[:8].upper()}"
-        with span(self.tracer, "ticket.process", {"helpdesk.ticket_id": ticket_id}):
+        with span(self.tracer, "ticket.process", {"helping.ticket_id": ticket_id}):
             history = self.memory.recent_for_employee(request.employee_id, self.settings.max_history_items)
             with span(self.tracer, "agent.intake"):
                 intake = await self.intake.classify(request, history)
@@ -86,7 +86,7 @@ class HelpDeskOrchestrator:
             draft.steps, post_blocked = filter_steps(draft.steps, self.settings.allow_high_risk_actions)
             if post_blocked or not output_is_safe(draft.response):
                 draft.status = "escalated"
-                draft.response = "Рекомендации требуют проверки специалистом HelpDesk. Не выполняйте непроверенные команды и не передавайте секреты."
+                draft.response = "Рекомендации требуют проверки специалистом Helping. Не выполняйте непроверенные команды и не передавайте секреты."
                 draft.steps = []
                 draft.escalation_reason = "Детерминированный safety-gate заблокировал потенциально опасное действие."
 

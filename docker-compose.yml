@@ -1,10 +1,10 @@
-name: it-helpdesk-agent
+name: it-helping-agent
 services:
   agent:
     build: .
     env_file: [.env]
     ports: ["8000:8000"]
-    volumes: ["helpdesk_data:/app/data"]
+    volumes: ["helping_data:/app/data"]
     extra_hosts: ["host.docker.internal:host-gateway"]
     read_only: true
     tmpfs: ["/tmp:size=128m,noexec,nosuid"]
@@ -32,7 +32,7 @@ services:
     image: grafana/grafana:12.1.0
     environment:
       GF_SECURITY_ADMIN_USER: admin
-      GF_SECURITY_ADMIN_PASSWORD: helpdesk-demo
+      GF_SECURITY_ADMIN_PASSWORD: helping-demo
       GF_USERS_ALLOW_SIGN_UP: "false"
     volumes:
       - grafana_data:/var/lib/grafana
@@ -52,6 +52,6 @@ services:
     security_opt: ["no-new-privileges:true"]
 
 volumes:
-  helpdesk_data:
+  helping_data:
   prometheus_data:
   grafana_data:

@@ -17,4 +17,4 @@ services:
 volumes:
   ollama_data:
     external: true
-    name: it-helpdesk_ollama_data
+    name: it-helping_ollama_data

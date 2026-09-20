@@ -1,1 +1,1 @@
-"""Specialized HelpDesk agents."""
+"""Specialized Helping agents."""

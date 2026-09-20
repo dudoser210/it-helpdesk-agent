@@ -11,7 +11,7 @@ from src.models import (
     SpecialistResult,
     TicketRequest,
 )
-from src.orchestrator import HelpDeskOrchestrator
+from src.orchestrator import HelpingOrchestrator
 
 
 async def test_end_to_end_graph_without_llm(tmp_path: Path):
@@ -21,7 +21,7 @@ async def test_end_to_end_graph_without_llm(tmp_path: Path):
         knowledge_dir=Path("knowledge"),
         otel_enabled=False,
     )
-    system = HelpDeskOrchestrator(settings)
+    system = HelpingOrchestrator(settings)
 
     async def classify(request, history):
         return IntakeResult(categories=[Category.wifi], priority=Priority.medium, summary="Проблема DNS")
