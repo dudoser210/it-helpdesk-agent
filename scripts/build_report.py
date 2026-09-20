@@ -184,7 +184,7 @@ def build() -> None:
 
     cover = [
         Spacer(1, 30 * mm),
-        Paragraph("IT HELPDESK AGENT", ParagraphStyle(
+        Paragraph("IT HELPING AGENT", ParagraphStyle(
             "Cover", parent=styles["h1"], alignment=TA_CENTER, fontSize=28, leading=34,
             textColor=colors.HexColor("#123A8C"), spaceAfter=12)),
         Paragraph("Мультиагентная система обработки заявок сотрудников", ParagraphStyle(
