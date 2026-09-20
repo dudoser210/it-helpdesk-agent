@@ -27,7 +27,7 @@ flowchart TD
 
 ```bash
 ollama list
-ollama run qwen3.5:latest "Ответь одним словом: готов"
+ollama run qwen3:8b "Ответь одним словом: готов"
 ```
 
 ### Windows или macOS + Docker Desktop
